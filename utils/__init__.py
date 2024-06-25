@@ -593,6 +593,9 @@ def find_efficientnet_layer(arch, target_layer_name):
     if len(hierarchy) == 2:
         target_layer = target_layer[int(hierarchy[1])]
 
+    if len(hierarchy) == 3:
+        target_layer = target_layer[int(hierarchy[1])][int[hierarchy[2]]]
+
     return target_layer    
 
 
