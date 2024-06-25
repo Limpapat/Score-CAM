@@ -581,6 +581,20 @@ def find_shufflenet_layer(arch, target_layer_name):
 
     return target_layer
 
+def find_efficientnet_layer(arch, target_layer_name):
+    if target_layer_name is None:
+        target_layer_name = 'features'
+
+    hierarchy = target_layer_name.split('_')
+
+    if len(hierarchy) >= 1:
+        target_layer = arch.features
+
+    if len(hierarchy) == 2:
+        target_layer = target_layer[int(hierarchy[1])]
+
+    return target_layer    
+
 
 def find_layer(arch, target_layer_name):
     """Find target layer to calculate CAM.
